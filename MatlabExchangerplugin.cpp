@@ -26,6 +26,7 @@ Q_DECLARE_METATYPE(MatlabExchanger)
 
 MatlabExchangerPlugin::MatlabExchangerPlugin(QObject *parent)
 {
+	MultiArrayObject = new MultiArray(parent);
 	MatlabExchangerObject = new MatlabExchanger(parent);
 	MatlabExchangerDiagObject = new MatlabExchanger_Dialog();	
 	strPluginInformation = QString(PLUGIN_INTERNAL_NAME) + " Plugin" + "(v" + PLUGIN_FILE_VERSION_STRING + ")";// +" by " + PLUGIN_AUTHOR_NAME;
@@ -34,12 +35,19 @@ MatlabExchangerPlugin::MatlabExchangerPlugin(QObject *parent)
 
 MatlabExchangerPlugin::~MatlabExchangerPlugin()
 {
+	delete MultiArrayObject;
 	delete MatlabExchangerDiagObject;
 	delete MatlabExchangerObject;
 }
 
 int MatlabExchangerPlugin::ConfigureScriptEngine(QScriptEngine &engine)
 {
+	QScriptValue MultiArrayObjectProto = engine.newQObject(MultiArrayObject);
+	engine.setDefaultPrototype(qMetaTypeId<MultiArray*>(), MultiArrayObjectProto);
+	QScriptValue multiArrayCtor = engine.newFunction(MultiArray::ctor__MultiArray, MultiArrayObjectProto);
+	engine.globalObject().setProperty(MULTIARRAY_NAME, multiArrayCtor);
+	qScriptRegisterMetaType(&engine, MultiArray::MultiArrayToScriptValue, MultiArray::MultiArrayFromScriptValue);
+
 	QScriptValue MatlabExchangerProto = engine.newQObject(MatlabExchangerObject);
 	engine.setDefaultPrototype(qMetaTypeId<MatlabExchanger*>(), MatlabExchangerProto);
 	QScriptValue MatlabExchangerCtor = engine.newFunction(MatlabExchanger::ctor__extensionname, MatlabExchangerProto);

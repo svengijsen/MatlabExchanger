@@ -18,26 +18,24 @@
 
 
 //This file defines the script binding interface, all below function are scriptable except for the destructor
-
 #ifndef MatlabExchanger_H
 #define MatlabExchanger_H
+
 #include <QObject>
 #include <QString>
 #include <QtScript>
 #include <QScriptable>
 #include "mainappinfo.h"
+#include <engine.h>
+#include <multiarray.h>
 
 class MatlabExchanger : public QObject, protected QScriptable
 {
 	Q_OBJECT
-	//Q_CLASSINFO("ScriptAPIClassName", "MatlabExchanger");//Can't use defines here!, moc doesn't handle defines, not needed here
-	Q_PROPERTY( short ExampleProperty WRITE setExampleProperty READ getExampleProperty )
-
-signals:
-	void ExampleSignalTriggered(short);
+	Q_CLASSINFO("ScriptAPIClassName", "MatlabExchanger");//Can't use defines here!, moc doesn't handle defines, not needed here
 
 public:
-	MatlabExchanger(QObject *parent = 0);
+	MatlabExchanger(QObject *parent = NULL);
 	~MatlabExchanger();
 	MatlabExchanger(const MatlabExchanger& other ){Q_UNUSED(other);}//TODO fill in copy constructor, should be used for the Q_DECLARE_METATYPE macro
 
@@ -45,13 +43,19 @@ public:
 
 public slots:
 	bool makeThisAvailableInScript(QString strObjectScriptName = "", QObject *engine = NULL);//To make the objects (e.g. defined in a *.exml file) available in the script
-	void setExampleProperty( short sExampleProperty );
-	short getExampleProperty() const;
+	
+	bool openEngine();
+	bool closeEngine();
+	void setVisibility(const bool &bSetVisible);
+	bool evaluateString(const QString &sCommand);
+	QString getOutput();
+	bool putVariabele(const QString &sVarName, MultiArray *pArray, const int &nSizeM, const int &nSizeN);
+	MultiArray *getVariabele(const QString &sVarName);
 
 private:
 	QScriptEngine* currentScriptEngine;
-	short m_ExampleProperty;
-
+	Engine *m_pEngine;
+	char m_output[4096];
 };
 
 #endif // MatlabExchanger_H

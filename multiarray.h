@@ -16,40 +16,31 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+#ifndef MULTIARRAY_H
+#define MULTIARRAY_H
 
-#include "MatlabExchanger_dialog.h"
-//#include <engine.h>
+#include <QObject>
+#include <QtScript/QtScript>
+#include <QStandardItemModel>
 
-MatlabExchanger_Dialog::MatlabExchanger_Dialog(QWidget *parent)	: QDialog(parent)
+class MultiArray : public QStandardItemModel
 {
-	//Gets constructed only once during the load of the plugin
-	ui.setupUi(this);
-	connect(ui.btnExampleButton, SIGNAL(clicked()), this, SLOT(exampleButton_Pressed()));
-}
+	Q_OBJECT
 
-MatlabExchanger_Dialog::~MatlabExchanger_Dialog()
-{
+public:
+	MultiArray(QObject *parent = NULL);
+	MultiArray(int nRows, int nColumns, QObject *parent = NULL);
+	~MultiArray();
 
-}
+	static QScriptValue ctor__MultiArray(QScriptContext* context, QScriptEngine* engine);
+	static QScriptValue MultiArrayToScriptValue(QScriptEngine *engine, MultiArray* const &s);
+	static void MultiArrayFromScriptValue(const QScriptValue &obj, MultiArray* &s);
 
-void MatlabExchanger_Dialog::on_okButton_clicked()
-{
-	cleanUp();
-	accept();
-}
+public slots:
 
-void MatlabExchanger_Dialog::on_cancelButton_clicked()
-{
-	cleanUp();
-	reject();
-}
+private:
+	
+};
+Q_DECLARE_METATYPE(MultiArray*);
 
-void MatlabExchanger_Dialog::cleanUp()
-{
-	return;
-}
-
-void MatlabExchanger_Dialog::exampleButton_Pressed()
-{
-	return;
-}
+#endif // MULTIARRAY_H

@@ -4,7 +4,8 @@
     <Import Project="..\..\BrainStim\Source\BrainStim\brainstim_plugins.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <MATLAB_INSTALL_DIR>C:\Program Files\MATLAB\R2014b</MATLAB_INSTALL_DIR>
+    <MATLAB_INSTALL_DIR>C:\Program Files\MATLAB\R2011b</MATLAB_INSTALL_DIR>
+    <Path>$(MATLAB_INSTALL_DIR)\bin\win64%3b$(Path)</Path>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemGroup>

@@ -28,10 +28,13 @@
 #include "plugininterface.h"
 #include "MatlabExchanger_dialog.h"
 #include "MatlabExchanger.h"
+#include "multiarray.h"
 #include "defines.h"
 
 QT_BEGIN_NAMESPACE
 QT_END_NAMESPACE
+
+#define MULTIARRAY_NAME	"MultiArray"
 
 class MatlabExchangerPlugin : public QObject, ExtensionInterface
 {
@@ -48,8 +51,8 @@ public:
 
 private:
 
-	short nExampleProperty;
 	MatlabExchanger *MatlabExchangerObject; 
+	MultiArray *MultiArrayObject;
 	MatlabExchanger_Dialog *MatlabExchangerDiagObject;
 
 public slots:
@@ -58,8 +61,8 @@ public slots:
 	//QStringList GetAdditionalFileExtensions() {return (QStringList() << "MatlabExchanger files (*.MatlabExchanger);;");};
 	QObject *GetScriptMetaObject(int nIndex) {if(nIndex == 0) return (QObject *)MatlabExchangerObject->metaObject(); else return NULL;};
 
-signals:
-	void DoSignal();
+//signals:
+//	void DoSignal();
 };
 
 #endif//MatlabExchangerPLUGIN_H
