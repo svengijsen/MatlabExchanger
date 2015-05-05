@@ -47,8 +47,14 @@ QScriptValue MultiArray::ctor__MultiArray(QScriptContext* context, QScriptEngine
 
 QScriptValue MultiArray::MultiArrayToScriptValue(QScriptEngine *engine, MultiArray* const &s)
 {
-	QScriptValue obj = engine->newQObject(s);
-	return obj;
+	int nItemCount = s->rowCount();
+	QScriptValue objScriptVal = engine->newArray(nItemCount);
+	for (int i = 0; i < nItemCount; i++)
+	{
+		QVariant tmpVar = s->data(s->index(i, 0));
+		objScriptVal.setProperty(i, QScriptValue(tmpVar.toString()));
+	}
+	return objScriptVal;
 }
 
 void MultiArray::MultiArrayFromScriptValue(const QScriptValue &obj, MultiArray* &s)
@@ -60,6 +66,8 @@ void MultiArray::MultiArrayFromScriptValue(const QScriptValue &obj, MultiArray* 
 		//(*s)[itr.name()] = qscriptvalue_cast<MultiArray::mapped_type>(itr.value());
 	//}
 	s = qobject_cast<MultiArray*>(obj.toQObject());
+	int nRows = s->rowCount();
+	int nColumns = s->columnCount();
 }
 
 //QVariant MultiArray::getEntry(const int &nRow, const int &nCol)

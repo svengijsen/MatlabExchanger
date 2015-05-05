@@ -53,6 +53,7 @@ int MatlabExchangerPlugin::ConfigureScriptEngine(QScriptEngine &engine)
 	QScriptValue MatlabExchangerCtor = engine.newFunction(MatlabExchanger::ctor__extensionname, MatlabExchangerProto);
 	engine.globalObject().setProperty(PLUGIN_SCRIPTOBJECT_NAME, MatlabExchangerCtor);
 	int nMetaType = qRegisterMetaType<MatlabExchanger>(PLUGIN_SCRIPTOBJECT_CLASS);
+
 	//FinalizeScriptObjectScriptContext(engine, MatlabExchangerObject);
 	return nMetaType;
 }

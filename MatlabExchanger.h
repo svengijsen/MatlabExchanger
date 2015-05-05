@@ -27,7 +27,11 @@
 #include <QScriptable>
 #include "mainappinfo.h"
 #include <engine.h>
-#include <multiarray.h>
+//#include <multiarray.h>
+
+#include "mexplus.h"
+#include <mexplus/mxarray.h>
+using mexplus::MxArray;
 
 class MatlabExchanger : public QObject, protected QScriptable
 {
@@ -40,17 +44,18 @@ public:
 	MatlabExchanger(const MatlabExchanger& other ){Q_UNUSED(other);}//TODO fill in copy constructor, should be used for the Q_DECLARE_METATYPE macro
 
 	static QScriptValue ctor__extensionname(QScriptContext* context, QScriptEngine* engine);
+	void setScriptEngine(QScriptEngine* engine);
 
 public slots:
 	bool makeThisAvailableInScript(QString strObjectScriptName = "", QObject *engine = NULL);//To make the objects (e.g. defined in a *.exml file) available in the script
-	
+
 	bool openEngine();
 	bool closeEngine();
 	void setVisibility(const bool &bSetVisible);
 	bool evaluateString(const QString &sCommand);
 	QString getOutput();
-	bool putVariabele(const QString &sVarName, MultiArray *pArray, const int &nSizeM, const int &nSizeN);
-	MultiArray *getVariabele(const QString &sVarName);
+	//bool putVariabele(const QString &sVarName, MultiArray *pArray, const int &nSizeM, const int &nSizeN);
+	QScriptValue getVariabele(const QString &sVarName);
 
 private:
 	QScriptEngine* currentScriptEngine;
