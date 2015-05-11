@@ -381,11 +381,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\Win32\Debug\Moc\moc_multiarray.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\Build_MSVC\Qt\Win32\Release\Moc\moc_MatlabExchanger.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -397,11 +392,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Build_MSVC\Qt\Win32\Release\Moc\moc_MatlabExchanger_dialog.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\Win32\Release\Moc\moc_multiarray.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -439,11 +429,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\x64\Debug\Moc\moc_multiarray.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\Build_MSVC\Qt\x64\Release\Moc\moc_MatlabExchanger.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -455,11 +440,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\Build_MSVC\Qt\x64\Release\Moc\moc_MatlabExchanger_dialog.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\x64\Release\Moc\moc_multiarray.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -485,7 +465,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
     <ClCompile Include="MatlabExchanger.cpp" />
     <ClCompile Include="MatlabExchanger_dialog.cpp" />
     <ClCompile Include="MatlabExchangerplugin.cpp" />
-    <ClCompile Include="multiarray.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -547,24 +526,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
     <ClInclude Include="..\..\BrainStim\plugininterface.h" />
     <ClInclude Include="customscriptobjects.h" />
     <ClInclude Include="defines.h" />
-    <CustomBuild Include="multiarray.h">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing multiarray.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp"  -DDEBUG -D_WINDOWS -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT_ -DQT_DLL -DQT_PLUGIN -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_SCRIPT_LIB -DQT_SCRIPTTOOLS_LIB -D_WINDLL "-I$(BRAINSTIM_HOME)\Source\BrainStim" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include" "-I$(QTDIR)\include\ActiveQt" "-I$(MATLAB_INSTALL_DIR)\extern\include" "-I.\debug" "-I." "-I$(SolutionDir)\BrainStim" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing multiarray.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp"  -DDEBUG -D_WINDOWS -DUNICODE -DWIN64 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_PLUGIN -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_SCRIPT_LIB -DQT_SCRIPTTOOLS_LIB -D_WINDLL "-I$(BRAINSTIM_HOME)\Source\BrainStim" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include" "-I$(QTDIR)\include\ActiveQt" "-I$(MATLAB_INSTALL_DIR)\extern\include" "-I.\debug" "-I." "-I$(SolutionDir)\BrainStim" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing multiarray.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp"  -DQT_NO_DEBUG -DNDEBUG -D_WINDOWS -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_PLUGIN -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -D_WINDLL "-I$(BRAINSTIM_HOME)\Source\BrainStim" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include" "-I$(QTDIR)\include\ActiveQt" "-I$(MATLAB_INSTALL_DIR)\extern\include" "-I.\debug" "-I." "-I$(SolutionDir)\BrainStim" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles"</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing multiarray.h...</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc\moc_%(Filename).cpp"  -DQT_NO_DEBUG -DNDEBUG -D_WINDOWS -DUNICODE -DWIN64 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_PLUGIN -DQT_GUI_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -D_WINDLL "-I$(BRAINSTIM_HOME)\Source\BrainStim" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtScriptTools" "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include" "-I$(QTDIR)\include\ActiveQt" "-I$(MATLAB_INSTALL_DIR)\extern\include" "-I.\debug" "-I." "-I$(SolutionDir)\BrainStim" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\Moc" "-I.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-    </CustomBuild>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

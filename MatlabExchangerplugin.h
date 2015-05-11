@@ -28,13 +28,10 @@
 #include "plugininterface.h"
 #include "MatlabExchanger_dialog.h"
 #include "MatlabExchanger.h"
-#include "multiarray.h"
 #include "defines.h"
 
 QT_BEGIN_NAMESPACE
 QT_END_NAMESPACE
-
-#define MULTIARRAY_NAME	"MultiArray"
 
 class MatlabExchangerPlugin : public QObject, ExtensionInterface
 {
@@ -52,7 +49,6 @@ public:
 private:
 
 	MatlabExchanger *MatlabExchangerObject; 
-	MultiArray *MultiArrayObject;
 	MatlabExchanger_Dialog *MatlabExchangerDiagObject;
 
 public slots:

@@ -27,7 +27,6 @@
 #include <QScriptable>
 #include "mainappinfo.h"
 #include <engine.h>
-//#include <multiarray.h>
 
 #include "mexplus.h"
 #include <mexplus/mxarray.h>
@@ -54,7 +53,6 @@ public slots:
 	void setVisibility(const bool &bSetVisible);
 	bool evaluateString(const QString &sCommand);
 	QString getOutput();
-	//bool putVariabele(const QString &sVarName, MultiArray *pArray, const int &nSizeM, const int &nSizeN);
 	QScriptValue getVariabele(const QString &sVarName);
 
 private:

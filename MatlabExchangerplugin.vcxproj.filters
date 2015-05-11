@@ -124,21 +124,6 @@
     <ClCompile Include="..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_MatlabExchanger.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="multiarray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\Win32\Debug\Moc\moc_multiarray.cpp">
-      <Filter>Generated Files\Debug_Win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\x64\Debug\Moc\moc_multiarray.cpp">
-      <Filter>Generated Files\Debug_x64</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\Win32\Release\Moc\moc_multiarray.cpp">
-      <Filter>Generated Files\Release_Win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Build_MSVC\Qt\x64\Release\Moc\moc_multiarray.cpp">
-      <Filter>Generated Files\Release_x64</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -175,9 +160,6 @@
     </CustomBuild>
     <CustomBuild Include="MatlabExchanger.qrc">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="multiarray.h">
-      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

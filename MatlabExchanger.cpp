@@ -109,20 +109,6 @@ bool MatlabExchanger::evaluateString(const QString &sCommand)
 	return false;
 }
 
-//bool MatlabExchanger::putVariabele(const QString &sVarName, MultiArray *pArray, const int &nSizeM, const int &nSizeN)
-//{
-//	if (m_pEngine)
-//	{
-//		mxArray *m_X;
-//		//Create a two - dimensional array to hold double - precision floating - point data; initialize each data element to 0.
-//		m_X = mxCreateDoubleMatrix(nSizeM, nSizeN, mxREAL);
-//		memcpy((void *)mxGetPr(m_X), (void *)pArray, sizeof(double) * nSizeM * nSizeN);
-//		engPutVariable(m_pEngine, sVarName.toLatin1(), m_X);
-//		return true;
-//	}
-//	return false;
-//}
-
 QScriptValue MatlabExchanger::getVariabele(const QString &sVarName)
 {
 	if (m_pEngine && currentScriptEngine)
@@ -130,128 +116,46 @@ QScriptValue MatlabExchanger::getVariabele(const QString &sVarName)
 		mxArray *pMexResult = engGetVariable(m_pEngine, sVarName.toLatin1());
 		if (pMexResult)
 		{
-			//Use mxGetPr on arrays of type double only. Use mxIsDouble to validate the mxArray type. 
-			//For other mxArray types, use mxGetData.
-			//Call mxGetPr to access the real data in the mxArray that pm points to.
-			//Once you have the starting address, you can access any other element in the mxArray.
-
-			if (mxIsDouble(pMexResult))
-			{
-				double *pDoubleResult1 = mxGetPr(pMexResult);
-				//double pDoubleResult2 = MxArray::to<double>(pMexResult);
-				//QVariant aa = MxArray::to<QVariant>(pMexResult);
-				//pDoubleResult2 = pDoubleResult2;
-				//vector<double> value = MxArray::to<vector<double> >(pMexResult);
-				/*
-				
-				 inline bool isCell() const { return mxIsCell(array_); }
-  /** Determine whether input is string array.
-   */
-				//inline bool isChar() const { return mxIsChar(array_); }
-				///** Determine whether array is member of specified class.
-				//*/
-				//inline bool isClass(const char* name) const {
-				//	return mxIsClass(array_, name);
-				//}
-				///** Determine whether data is complex.
-				//*/
-				//inline bool isComplex() const { return mxIsComplex(array_); }
-				///** Determine whether mxArray represents data as double-precision,
-				//* floating-point numbers.
-				//*/
-				//inline bool isDouble() const { return mxIsDouble(array_); }
-				///** Determine whether array is empty.
-				//*/
-				//inline bool isEmpty() const { return mxIsEmpty(array_); }
-				///** Determine whether input is finite.
-				//*/
-				//static inline bool IsFinite(double value) { return mxIsFinite(value); }
-				///** Determine whether array was copied from MATLAB global workspace.
-				//*/
-				//inline bool isFromGlobalWS() const { return mxIsFromGlobalWS(array_); };
-				///** Determine whether input is infinite.
-				//*/
-				//static inline bool IsInf(double value) { return mxIsInf(value); }
-				///** Determine whether array represents data as signed 8-bit integers.
-				//*/
-				//inline bool isInt8() const { return mxIsInt8(array_); }
-				///** Determine whether array represents data as signed 16-bit integers.
-				//*/
-				//inline bool isInt16() const { return mxIsInt16(array_); }
-				///** Determine whether array represents data as signed 32-bit integers.
-				//*/
-				//inline bool isInt32() const { return mxIsInt32(array_); }
-				///** Determine whether array represents data as signed 64-bit integers.
-				//*/
-				//inline bool isInt64() const { return mxIsInt64(array_); }
-				///** Determine whether array is of type mxLogical.
-				//*/
-				//inline bool isLogical() const { return mxIsLogical(array_); }
-				///** Determine whether scalar array is of type mxLogical.
-				//*/
-				//inline bool isLogicalScalar() const { return mxIsLogicalScalar(array_); }
-				///** Determine whether scalar array of type mxLogical is true.
-				//*/
-				//inline bool isLogicalScalarTrue() const {
-				//	return mxIsLogicalScalarTrue(array_);
-				//}
-				///** Determine whether array is numeric.
-				//*/
-				//inline bool isNumeric() const { return mxIsNumeric(array_); }
-				///** Determine whether array represents data as single-precision,
-				//* floating-point numbers.
-				//*/
-				//inline bool isSingle() const { return mxIsSingle(array_); }
-				///** Determine whether input is sparse array.
-				//*/
-				//inline bool isSparse() const { return mxIsSparse(array_); }
-				///** Determine whether input is structure array.
-				//*/
-				//inline bool isStruct() const { return mxIsStruct(array_); }
-				///** Determine whether array represents data as unsigned 8-bit integers.
-				//*/
-				//inline bool isUint8() const { return mxIsUint8(array_); }
-				///** Determine whether array represents data as unsigned 16-bit integers.
-				//*/
-				//inline bool isUint16() const { return mxIsUint16(array_); }
-				///** Determine whether array represents data as unsigned 32-bit integers.
-				//*/
-				//inline bool isUint32() const { return mxIsUint32(array_); }
-				///** Determine whether array represents data as unsigned 64-bit integers.
-				//*/
-				//inline bool isUint64() const { return mxIsUint64(array_); }
-				///** Determine whether a struct array has a specified field.
-				//*/
-				//bool hasField(const std::string& field_name, mwIndex index = 0) const {
-				//	return isStruct() &&
-				//		mxGetField(array_, index, field_name.c_str()) != NULL;
-				//}
-				///** Determine whether input is NaN (Not-a-Number).
-				//*/
-				//static inline bool IsNaN(double value) { return mxIsNaN(value); }
-				///** Value of infinity.
-				//*/
-
-
-			}
-
-			double *pDoubleResult = mxGetPr(pMexResult);
+			void *pResult = mxGetData(pMexResult);
 			int nRows = mxGetM(pMexResult);
 			int nCols = mxGetN(pMexResult);
 			int nElementCount = nRows * nCols;
 			if (nElementCount > 0)
 			{
-				QScriptValue retList = currentScriptEngine->newArray(nCols);
+				QScriptValue retList = currentScriptEngine->newArray(nRows);
+				int nCurrentElementCounter = 0;
 				int nCurrentElementIndexNumber = 0;
-				for (int n = 0; n < nCols; n++)
+				MEXPLUS_CHECK_NOTNULL(pMexResult);
+				//MEXPLUS_CHECK_NOTNULL(value);
+				mxClassID mxID = mxGetClassID(pMexResult);
+				for (int nCurrentRow = 0; nCurrentRow < nRows; nCurrentRow++)
 				{
-					QScriptValue svCurrentColumn = currentScriptEngine->newArray(nRows);
-					for (int m = 0; m < nRows; m++)
+					QScriptValue svCurrentRow;
+					if (mxID == mxCHAR_CLASS)
+						svCurrentRow = currentScriptEngine->newArray(1);
+					else
+						svCurrentRow = currentScriptEngine->newArray(nCols);
+					for (int nCurrentColumn = 0; nCurrentColumn < nCols; nCurrentColumn++)
 					{
-						svCurrentColumn.setProperty(m, QScriptValue(pDoubleResult[nCurrentElementIndexNumber]));
-						nCurrentElementIndexNumber++;
+						nCurrentElementIndexNumber = nCurrentRow + (nCurrentColumn * nRows);
+						if (mxID == mxINT8_CLASS) { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((int8_t*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxUINT8_CLASS)  { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((uint8_t*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxINT16_CLASS)  { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((int16_t*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxUINT16_CLASS) { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((uint16_t*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxINT32_CLASS)  { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((int32_t*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxUINT32_CLASS) { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((uint32_t*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxINT64_CLASS)  { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(QVariant(((int64_t*)pResult)[nCurrentElementIndexNumber]).toString())); }
+						else if (mxID == mxUINT64_CLASS) { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(QVariant(((uint64_t*)pResult)[nCurrentElementIndexNumber]).toString())); }
+						else if (mxID == mxSINGLE_CLASS) { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((float*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxDOUBLE_CLASS) { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(((double*)pResult)[nCurrentElementIndexNumber])); }
+						else if (mxID == mxCHAR_CLASS)   { svCurrentRow.setProperty(nCurrentColumn, QScriptValue(mxArrayToString(pMexResult))); break; }
+						else { qDebug() << __FUNCTION__ << "Cannot convert %s.", mxGetClassName(pMexResult); break; }
+						//else if (mxID == mxLOGICAL_CLASS {break; //assignTo<mxLogical, T>(array, value); }
+						//else if (mxID == mxCELL_CLASS {break; //assignCellTo<T>(array, value); }
+						//else if (mxID == mxSPARSE_CLASS {
+						nCurrentElementCounter++;
 					}
-					retList.setProperty(n, svCurrentColumn);
+					retList.setProperty(nCurrentRow, svCurrentRow);
 				}
 				return retList;
 			}
@@ -259,66 +163,3 @@ QScriptValue MatlabExchanger::getVariabele(const QString &sVarName)
 	}
 	return NULL;
 }
-
-/*
-
-//engSetVisible(m_pEngine, false);
-double x[1000];
-double y[1000];
-double z[1000];
-
-double t = 0;
-const double dt = 0.001;
-int i, j;
-double a, b;
-
-mxArray *z_array = mxCreateDoubleMatrix(1000, 1, mxREAL);
-mxArray *a_array = mxCreateDoubleMatrix(1, 1, mxREAL);
-mxArray *b_array = mxCreateDoubleMatrix(1, 1, mxREAL);
-
-double *pz = mxGetPr(z_array);
-double *pa = mxGetPr(a_array);
-double *pb = mxGetPr(b_array);
-
-for (i = 0; i < 1000; i++)
-{
-x[i] = cos(2 * M_PI*t);
-y[i] = sin(2 * M_PI*t);
-t += dt;
-}
-a = 1;
-b = 0;
-for (j = 0; j < 100; j++)
-{
-for (i = 0; i < 1000; i++)
-{
-z[i] = a*x[i] + b*y[i];
-pz[i] = z[i];
-}
-pa[0] = a;
-pb[0] = b;
-engPutVariable(m_pEngine, "z", z_array);
-engPutVariable(m_pEngine, "a", a_array);
-engPutVariable(m_pEngine, "b", b_array);
-engEvalString(m_pEngine, "testPlot");
-a = a - 0.01;
-b = b + 0.01;
-
-/*
-//returning a array, max is 2GB!
-mxArray *return_array = engGetVariable(m_pEngine, "z");
-if (return_array != NULL)
-{
-double *test = mxGetPr(return_array);
-if (test)
-{
-double a = *test;
-a = a;
-}
-}
-
-		}
-	}
-
-*/
-
