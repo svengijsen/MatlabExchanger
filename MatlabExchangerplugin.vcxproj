@@ -133,7 +133,7 @@
       <AdditionalDependencies>Qt5Core$(DebugSuffix).lib;Qt5Script$(DebugSuffix).lib;Qt5ScriptTools$(DebugSuffix).lib;Qt5Widgets$(DebugSuffix).lib;Qt5Gui$(DebugSuffix).lib;libeng.lib;libmat.lib;libmx.lib;libmex.lib</AdditionalDependencies>
       <OutputFile>$(ProjectDir)..\Build_MSVC\$(ProjectName)\$(Platform)\$(Configuration)\$(ProjectName)_$(Platform)_$(Configuration).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(MATLAB_INSTALL_DIR)\extern\lib\win64\microsoft;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(MATLAB_INSTALL_DIR)\extern\lib\win32\microsoft;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>
       </ProgramDatabaseFile>
@@ -263,7 +263,7 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <AdditionalDependencies>Qt5Core$(DebugSuffix).lib;Qt5Script$(DebugSuffix).lib;Qt5ScriptTools$(DebugSuffix).lib;Qt5Widgets$(DebugSuffix).lib;Qt5Gui$(DebugSuffix).lib;libeng.lib;libmat.lib;libmx.lib;libmex.lib</AdditionalDependencies>
       <OutputFile>$(ProjectDir)..\Build_MSVC\$(ProjectName)\$(Platform)\$(Configuration)\$(ProjectName)_$(Platform)_$(Configuration).dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(MATLAB_INSTALL_DIR)\extern\lib\win64\microsoft;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(MATLAB_INSTALL_DIR)\extern\lib\win32\microsoft;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>
       </ProgramDatabaseFile>
@@ -554,30 +554,6 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
   </ItemGroup>
   <ItemGroup>
     <None Include="licenseheader.licenseheader" />
-    <None Include="resources\MatlabExchangerWin32_Debug.ini">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </None>
-    <None Include="resources\MatlabExchangerWin32_Release.ini">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </None>
-    <None Include="resources\MatlabExchangerx64_Debug.ini">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </None>
-    <None Include="resources\MatlabExchangerx64_Release.ini">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </None>
     <None Include="MatlabExchanger.json" />
     <CustomBuild Include="MatlabExchanger.qrc">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FullPath);.\resources\MatlabExchangerWin32_Debug.ini;.\resources\MatlabExchangerWin32_Release.ini;.\resources\MatlabExchangerx64_Debug.ini;.\resources\MatlabExchangerx64_Release.ini;%(AdditionalInputs)</AdditionalInputs>
@@ -597,6 +573,10 @@ echo POSTBUILDSTEP for $(ProjectName) COMPLETED OK
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\..\Build_MSVC\Qt\$(PlatformName)\$(ConfigurationName)\GeneratedFiles\qrc_%(Filename).cpp</Command>
     </CustomBuild>
+    <None Include="resources\MatlabExchangerplugin_Win32_Debug.ini" />
+    <None Include="resources\MatlabExchangerplugin_Win32_Release.ini" />
+    <None Include="resources\MatlabExchangerplugin_x64_Debug.ini" />
+    <None Include="resources\MatlabExchangerplugin_x64_Release.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

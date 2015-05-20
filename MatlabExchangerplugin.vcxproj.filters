@@ -168,16 +168,16 @@
   <ItemGroup>
     <None Include="licenseheader.licenseheader" />
     <None Include="MatlabExchanger.json" />
-    <None Include="resources\MatlabExchangerWin32_Debug.ini">
+    <None Include="resources\MatlabExchangerplugin_Win32_Debug.ini">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\MatlabExchangerWin32_Release.ini">
+    <None Include="resources\MatlabExchangerplugin_Win32_Release.ini">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\MatlabExchangerx64_Debug.ini">
+    <None Include="resources\MatlabExchangerplugin_x64_Debug.ini">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\MatlabExchangerx64_Release.ini">
+    <None Include="resources\MatlabExchangerplugin_x64_Release.ini">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

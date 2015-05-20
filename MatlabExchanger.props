@@ -4,9 +4,12 @@
     <Import Project="..\..\BrainStim\Source\BrainStim\brainstim_plugins.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <MATLAB_INSTALL_DIR>C:\Program Files\MATLAB\R2011b</MATLAB_INSTALL_DIR>
+    <!--platform-->
+    <MATLAB_INSTALL_DIR Condition="'$(Platform)' == 'Win32'">C:\Program Files\MATLAB\R2014a_x86</MATLAB_INSTALL_DIR>
+    <Path Condition="'$(Platform)' == 'Win32'">$(MATLAB_INSTALL_DIR)\bin\win32%3b$(Path)</Path>
+    <MATLAB_INSTALL_DIR Condition="'$(Platform)' == 'x64'">C:\Program Files\MATLAB\R2014a_x64</MATLAB_INSTALL_DIR>
+    <Path Condition="'$(Platform)' == 'x64'">$(MATLAB_INSTALL_DIR)\bin\win64%3b$(Path)</Path>
     <MEXPLUS_DIR>E:\Libraries\mexplus</MEXPLUS_DIR>
-    <Path>$(MATLAB_INSTALL_DIR)\bin\win64%3b$(Path)</Path>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemGroup>
