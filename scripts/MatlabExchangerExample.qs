@@ -1,3 +1,4 @@
+//Add and clear a new output window tab
 BrainStim.addOutputWindow("MATLAB");
 BrainStim.clearOutputWindow("MATLAB");
 //Construct a new objects
