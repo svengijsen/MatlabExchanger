@@ -32,6 +32,10 @@
 #include <mexplus/mxarray.h>
 using mexplus::MxArray;
 
+//!  The MatlabExchanger class. 
+/*!
+The MatlabExchanger can be used to exchange data and commands with MatLab
+*/
 class MatlabExchanger : public QObject, protected QScriptable
 {
 	Q_OBJECT
@@ -48,11 +52,37 @@ public:
 public slots:
 	bool makeThisAvailableInScript(QString strObjectScriptName = "", QObject *engine = NULL);//To make the objects (e.g. defined in a *.exml file) available in the script
 
+	//! \brief openEngine slot
+	/*!  This function tries to open a connection to a Matlab engine, this can take some seconds.
+	* @return a boolean value determining whether the connection could be established.
+	*/
 	bool openEngine();
+	//! \brief closeEngine slot.
+	/*!  This function closes a opened Matlab engine connection, see openEngine().
+	* @return a boolean value determining whether the connection could be closed.
+	*/
 	bool closeEngine();
+	//! \brief setVisibility slot.
+	/*!  This function configures whether the Matlab engine window to be opened should be visible.
+	* @param bSetVisible a boolean value determining the visibility.
+	*/
 	void setVisibility(const bool &bSetVisible);
+	//! \brief evaluateString slot.
+	/*!  This function sends a command string to the opened Matlab engine connection to evaluate.
+	* @param sCommand a string containing the command.
+	* @return a boolean value determining whether the command could be evaluated.
+	*/
 	bool evaluateString(const QString &sCommand);
+	//! \brief getOutput slot.
+	/*!  This function retrieves the last Matlab engine output messages.
+	* @return a string containing the latest messages.
+	*/
 	QString getOutput();
+	//! \brief getVariabele slot.
+	/*!  This function fetches the value of a Matlab variable as a script value.
+	* @param sVarName the name of the Matlab variable.
+	* @return a script value holding the value of the variabele.
+	*/
 	QScriptValue getVariabele(const QString &sVarName);
 
 private:
