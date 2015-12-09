@@ -1,4 +1,4 @@
-var sPluginName = "<Rename>";
+var sPluginName = "MatlabExchanger";
 var tmpString;
 var InstallProcess = new QProcess();
 var tmpByteArray = new QByteArray();

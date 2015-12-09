@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<QHelpCollectionProject version="1.0">
+<!--doc-version-qhelp-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (15119144020),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+  <assistant>
+		<title>MatlabExchanger plugin v1.0.0.1</title>
+    <applicationIcon>MatlabExchanger/images/logo.jpg</applicationIcon>
+    <cacheDirectory>svengijsen/BrainStim/Plugins/MatlabExchanger</cacheDirectory>
+    <startPage>qthelp://com.svengijsen.brainstim/doc/plugins/MatlabExchanger/index.html</startPage>
+    <aboutMenuText>
+        <text>About MatlabExchanger</text>
+    </aboutMenuText>
+    <aboutDialog>
+        <file>MatlabExchanger/additional/about.txt</file>
+        <icon>MatlabExchanger/images/logo.jpg</icon>
+    </aboutDialog>
+    <enableDocumentationManager>false</enableDocumentationManager>
+    <enableAddressBar>false</enableAddressBar>
+    <enableFilterFunctionality>false</enableFilterFunctionality>
+  </assistant>
+  <docFiles>
+  	<generate>
+    	<file>
+      	<input>MatlabExchanger.qhp</input>
+        <output>MatlabExchanger.qch</output>
+      </file>
+    </generate>
+    <register>
+    	<file>MatlabExchanger.qch</file>
+    </register>
+  </docFiles>
+	</QHelpCollectionProject>
+<!--doc-version-qhelp-end-->

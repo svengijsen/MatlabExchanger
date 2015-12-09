@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+<!--doc-version-qhelp-namespace-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (15119144020),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+	<namespace>com.trolltech.brainstim.plugins.MatlabExchanger</namespace>
+<!--doc-version-qhelp-namespace-end-->
+	<virtualFolder>doc</virtualFolder>
+	<filterSection>
+		<toc>
+<!--doc-version-qhelp-toc-root-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (15119144020),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+			<section title="Plugin: MatlabExchanger" ref="./MatlabExchanger/index.html">
+<!--doc-version-qhelp-toc-root-end-->
+<!--doc-version-qhelp-toc-scriptclass-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (15119144020),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+				<section title="MatlabExchanger &lt;Script Class&gt;"  ref="./MatlabExchanger/Doxygen/index.html">
+<!--doc-version-qhelp-toc-scriptclass-end-->
+				</section>
+			</section>    
+		</toc>
+		<keywords>
+<!--doc-version-qhelp-keywords-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (15119144020),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+			<keyword name="MatlabExchanger" ref="./MatlabExchanger/index.html"/>
+<!--doc-version-qhelp-keywords-end-->
+		</keywords>
+		<files>
+<!--doc-version-qhelp-files-begin-->
+<!-- Please do not edit the below line(s) manually, see DocumentVersioning.qs (15119144020),BrainStim version 1.0.0.1, Plugin version 1.0.0.1-->
+			<file>bootstrap/css/*</file>
+			<file>bootstrap/fonts/*</file>
+			<file>bootstrap/js/*</file>
+			<file>google-code-prettify/*</file>
+			<file>css/*</file>
+			<file>MatlabExchanger/*</file>
+			<file>MatlabExchanger/additional/*</file>
+			<file>MatlabExchanger/images/*</file>
+			<file>MatlabExchanger/Doxygen/*</file>
+<!--doc-version-qhelp-files-end-->
+		</files>
+	</filterSection>
+</QtHelpProject>
