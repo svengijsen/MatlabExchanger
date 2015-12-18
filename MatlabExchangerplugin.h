@@ -52,6 +52,7 @@ private:
 	MatlabExchanger_Dialog *MatlabExchangerDiagObject;
 
 public slots:
+	bool HasGUI() { return false; };
     bool ShowGUI();
 	bool IsCompatible() {return PluginInterface::IsCompatible();};// ExtensionInterface PluginInterface::IsCompatible();};
 	//QStringList GetAdditionalFileExtensions() {return (QStringList() << "MatlabExchanger files (*.MatlabExchanger);;");};

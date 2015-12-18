@@ -16,11 +16,8 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-
-//This file implements the UI functionality
-
-#ifndef MatlabExchanger_DIALOG_H
-#define MatlabExchanger_DIALOG_H
+#ifndef MATLABEXCHANGER_DIALOG_H
+#define MATLABEXCHANGER_DIALOG_H
 
 #include <QDialog>
 #include "ui_MatlabExchanger_dialog.h"
@@ -46,4 +43,4 @@ private slots:
 	void on_okButton_clicked();
 };
 
-#endif // MatlabExchanger_DIALOG_H
+#endif // MATLABEXCHANGER_DIALOG_H

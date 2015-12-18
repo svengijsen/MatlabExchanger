@@ -18,9 +18,8 @@
 
 
 #include "MatlabExchanger.h"
-//#include <QModelIndex>
 
-QScriptValue MatlabExchanger::ctor__extensionname(QScriptContext* context, QScriptEngine* engine)
+QScriptValue MatlabExchanger::ctor_MatlabExchanger(QScriptContext* context, QScriptEngine* engine)
 {
 	Q_UNUSED(context);
 	MatlabExchanger *tmpObject = new MatlabExchanger();

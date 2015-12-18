@@ -4,15 +4,6 @@ BrainStim.clearOutputWindow("MATLAB");
 //Construct a new objects
 var mainDialog;
 var objMatlabExchanger = new MatlabExchanger();
-//var MultiArrayobj = new MultiArray(3,2);//Rows, Columns
-//var tCleanupTimer = new QTimer();
-//var KeyBoardCaptureObj = new KeyBoardCapture();
-//KeyBoardCaptureObj.CaptureThreadKeyPressed.connect(this, this.KeyCaptureDetectFunction);
-//KeyBoardCaptureObj.StartCaptureThread(0, true);//, lAllowedKeyCodeList);
-//var arrItem = new QStandardItem();
-//BrainStim.enableActiveDocument(false);
-//tCleanupTimer.singleshot = true;
-//tCleanupTimer.timeout.connect(this, CleanupScript);
 
 function Dialog(parent)
 {
@@ -41,32 +32,6 @@ function Dialog(parent)
 	layout.addWidget(this.getVariableButton, 2, 0);
 	layout.addWidget(this.getVariableLineEdit, 2, 1);
 	this.getVariableLineEdit.text = "x";
-	/*
-	/////////////////////////////////////////////////////
-	this.showNodeLabel = new QLabel;
-	this.showNodeLabel.setFrameStyle(frameStyle);
-	this.showGraphEditorButton = new QPushButton(tr("Show Experiment(graph editor)"));	
-	layout.addWidget(this.showGraphEditorButton, 3, 0);
-	layout.addWidget(this.showNodeLabel, 3, 1);
-	/////////////////////////////////////////////////////
-	this.showTreeLabel = new QLabel;
-	this.showTreeLabel.setFrameStyle(frameStyle);
-	this.showTreeEditorButton = new QPushButton(tr("Show Experiment(table editor)"));	
-	layout.addWidget(this.showTreeEditorButton, 4, 0);
-	layout.addWidget(this.showTreeLabel, 4, 1);
-	/////////////////////////////////////////////////////	
-	this.runLabel = new QLabel;
-	this.runLabel.setFrameStyle(frameStyle);
-	this.runButton = new QPushButton(tr("Run Experiment"));	
-	layout.addWidget(this.runButton, 5, 0);
-	layout.addWidget(this.runLabel, 5, 1);
-	/////////////////////////////////////////////////////
-	this.saveLabel = new QLabel;
-	this.saveLabel.setFrameStyle(frameStyle);
-	this.saveButton = new QPushButton(tr("Save Experiment"));	
-	layout.addWidget(this.saveButton, 6, 0);
-	layout.addWidget(this.saveLabel, 6, 1);
-*/
 	/////////////////////////////////////////////////////
 	this.exitLabel = new QLabel;
 	this.exitLabel.setFrameStyle(frameStyle);
@@ -123,54 +88,6 @@ Dialog.prototype.getMatlabVariabele = function()
 	}	
 	ChangeDialogState("Idle");
 }
-/*
-Dialog.prototype.showTreeViewEditor = function()
-{
-	Log("showTreeViewEditor()");
-	if(!ExperimentManagerObj.showTreeviewExperimentDialog(cExperimentStructure_Object))
-	{
-		Log("~~Failed to show the Experiment Structure");
-	}	
-//	LogState(cExperimentStructure_Object.getCurrentExperimentState());	
-}
-
-Dialog.prototype.showGraphEditor = function()
-{
-	if(!ExperimentManagerObj.showVisualExperimentDialog(cExperimentStructure_Object)) //cExperimentStructure_Object1
-	{
-		Log("~~Failed to show the Experiment Structure");
-	}	
-//	LogState(cExperimentStructure_Object.getCurrentExperimentState());	
-}
-
-Dialog.prototype.runExperiment = function()
-{
-	ChangeDialogState("Run");
-	if(!ExperimentManagerObj.runExperiment()) //Try to run the experiment
-	{
-		Log("~~Failed to run the Experiment");
-		ChangeDialogState("Idle");
-	}
-	else
-	{
-		ConnectDisconnectExperimentStructure(true);
-	}	
-}
-
-Dialog.prototype.saveExperiment = function()
-{
-	ChangeDialogState("Save");
-	if(!ExperimentManagerObj.saveExperiment(sExperimentFilePathSaved)) //Try to run the experiment
-	{
-		Log("~~Failed to save the Experiment");
-	}
-	else
-	{
-		Log("Experiment Saved!");
-	}	
-	ChangeDialogState("Idle");
-}
-*/
 
 Dialog.prototype.keyPressEvent = function(e /*QKeyEvent e*/)
 {
@@ -201,10 +118,6 @@ function ConnectDisconnectScriptFunctions(Connect)
 			mainDialog.openEngineButton["clicked()"].connect(mainDialog, mainDialog.openEngine);
 			mainDialog.evaluateStringButton["clicked()"].connect(mainDialog, mainDialog.evaluateMatlabScript);
 			mainDialog.getVariableButton["clicked()"].connect(mainDialog, mainDialog.getMatlabVariabele);
-			/*mainDialog.showGraphEditorButton["clicked()"].connect(mainDialog, mainDialog.showGraphEditor);
-			mainDialog.showTreeEditorButton["clicked()"].connect(mainDialog, mainDialog.showTreeViewEditor);			
-			mainDialog.runButton["clicked()"].connect(mainDialog, mainDialog.runExperiment);
-			mainDialog.saveButton["clicked()"].connect(mainDialog, mainDialog.saveExperiment);*/
 			mainDialog.exitButton["clicked()"].connect(this, this.CleanupScript);			
 		} 
 		catch (e) 
@@ -220,10 +133,6 @@ function ConnectDisconnectScriptFunctions(Connect)
 			mainDialog.openEngineButton["clicked()"].disconnect(mainDialog, mainDialog.openEngine);
 			mainDialog.evaluateStringButton["clicked()"].disconnect(mainDialog, mainDialog.evaluateMatlabScript);
 			mainDialog.getVariableButton["clicked()"].disconnect(mainDialog, mainDialog.getMatlabVariabele);
-			/*mainDialog.showGraphEditorButton["clicked()"].disconnect(mainDialog, mainDialog.showGraphEditor);
-			mainDialog.showTreeEditorButton["clicked()"].disconnect(mainDialog, mainDialog.showTreeViewEditor);				
-			mainDialog.runButton["clicked()"].disconnect(mainDialog, mainDialog.runExperiment);
-			mainDialog.saveButton["clicked()"].disconnect(mainDialog, mainDialog.saveExperiment);*/
 			mainDialog.exitButton["clicked()"].disconnect(this, this.CleanupScript);			
 		} 
 		catch (e) 
@@ -254,11 +163,6 @@ function CleanupScript()
 	Dialog.prototype.openEngine = null;
 	Dialog.prototype.evaluateMatlabScript = null;
 	Dialog.prototype.getMatlabVariabele = null;
-	/*Dialog.prototype.showGraphEditor = null;
-	Dialog.prototype.showTreeViewEditor = null;
-	Dialog.prototype.runExperiment = null;
-	Dialog.prototype.saveExperiment = null;
-	*/
 	Dialog.prototype = null;
 	Dialog = null;
 	tr = null;	
@@ -286,17 +190,6 @@ function ChangeDialogState(sType)
 		mainDialog.setWindowTitle("BrainStim - Retrieving...");
 		mainDialog.setEnabled(false);
 	}
-	/*else if(sType == "Run")
-	{
-		mainDialog.setWindowTitle("BrainStim - Running...");
-		mainDialog.setEnabled(false);
-	}
-	else if(sType == "Save")
-	{
-		mainDialog.setWindowTitle("BrainStim - Saving...");
-		mainDialog.setEnabled(false);
-	}
-	*/
 	else if((sType == "Idle")||(sType == "Closed"))
 	{
 		mainDialog.setEnabled(true);

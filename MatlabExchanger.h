@@ -18,8 +18,8 @@
 
 
 //This file defines the script binding interface, all below function are scriptable except for the destructor
-#ifndef MatlabExchanger_H
-#define MatlabExchanger_H
+#ifndef MATLABEXCHANGER_H
+#define MATLABEXCHANGER_H
 
 #include <QObject>
 #include <QString>
@@ -34,7 +34,7 @@ using mexplus::MxArray;
 
 //!  The MatlabExchanger class. 
 /*!
-The MatlabExchanger can be used to exchange data and commands with MatLab
+The MatlabExchanger can send commands and exchange data with MatLab.
 */
 class MatlabExchanger : public QObject, protected QScriptable
 {
@@ -46,7 +46,7 @@ public:
 	~MatlabExchanger();
 	MatlabExchanger(const MatlabExchanger& other ){Q_UNUSED(other);}//TODO fill in copy constructor, should be used for the Q_DECLARE_METATYPE macro
 
-	static QScriptValue ctor__extensionname(QScriptContext* context, QScriptEngine* engine);
+	static QScriptValue ctor_MatlabExchanger(QScriptContext* context, QScriptEngine* engine);
 	void setScriptEngine(QScriptEngine* engine);
 
 public slots:
@@ -91,4 +91,4 @@ private:
 	char m_output[4096];
 };
 
-#endif // MatlabExchanger_H
+#endif // MATLABEXCHANGER_H
