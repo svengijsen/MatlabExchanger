@@ -9,7 +9,7 @@ Include(sBrainStimDocPath + "/scripts/DocumentVersioningLib.qs");
 /////////////////////////CONFIGURATION(BEGIN)////////////////////////////////////////////
 _sPluginName = "MatlabExchanger";
 _sPluginDocRootFolderName = "MatlabExchanger";
-_sPluginVersion = "1.0.0.1";
+_sPluginVersion = "1.1.0.1";
 _sDocVersion = "1.0.0.1";
 var _sMinimalBrainStimVersion = "1.1.0.0";
 var _sGitHubAccount = "svengijsen";
